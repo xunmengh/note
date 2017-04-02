@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <title>makedown语法</title>
+    <meta charset="UTF-8">
+    <script src="../../plugin/showdown/showdown.js"></script>
+    <!--<link rel="stylesheet" href="../../plugin/bootstrap/css/bootstrap.css"  />-->
+</head>
+<body>
+<!--
+   #标题
+       >block引用字符 &gt;  一级标题使用#号
+-->
+<div  style="float:left;width:50%;">
+   <textarea id="oriContent" style="height:400px;width:100%;" onkeyup="convert()">
+
+   </textarea>
+</div>
+
+<div id="result"  style="float:right; padding-left:30px;  border:1px solid gray; width: 45%;height:400px; ">
+</div>
+
+
+
+<script type="text/javascript">
+    function convert(){
+
+        var text = document.getElementById("oriContent").value;
+        var converter = new showdown.Converter();
+        var html = converter.makeHtml(text);
+        document.getElementById("result").innerHTML = html;
+    }
+</script>
+</body>
+</html>

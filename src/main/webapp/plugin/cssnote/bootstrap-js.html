@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>bootstrap 笔记</title>
+    <link type="text/css" rel="stylesheet" href="../syntaxhighlighter/styles/shCoreDefault.css"/>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css" />
+    <script type="text/javascript" src="../bootstrap/jquery/jquery-2.1.4.min.js"> </script>
+    <script type="text/javascript" src="../bootstrap/js/bootstrap.js"> </script>
+    <script type="text/javascript" src="../syntaxhighlighter/scripts/shCore.js"></script>
+    <script type="text/javascript" src="../syntaxhighlighter/scripts/shBrushJScript.js"></script>
+    <script type="text/javascript" src="../syntaxhighlighter/scripts/shBrushXml.js"></script>
+    <script type="text/javascript">SyntaxHighlighter.all();</script>
+    <link  type="text/css" rel="stylesheet" href="docs.min.css" />
+    <link  type="text/css" rel="stylesheet" href="patch.css" />
+    <style type="text/css">
+        body{ padding-bottom: 70px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <ul class="nav navbar-nav">
+            <li><a href="index.html">css</a></li>
+            <li><a href="index.html">常用的css样式应用</a></li>
+            <li><a href="bootstrap.html">bootstrap</a></li>
+            <li><a href="bootstrap-js.html">bootstrap-js</a></li>
+        </ul>
+    </div>
+    <div class="bs-docs-header">
+        <div class="container">
+            <h1 >基本</h1>
+            <p >介绍bootstrap js的插件</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="bs-docs-section">
+                    <h3>model</h3>
+                    <p>position:fix top 0 bottom 0 z-index 使得高度为屏幕的高度<br>
+                       添加遮罩层 设置z-index 不透明度，添加到body上<br>
+                        modal modal-dialog modal-content<br>
+                        data-backdrop="static" 点击背景颜色 data-keyboard="false" esc键的事件 data-show="true" href 加载的内容 替换modal-content <br>
+                        js $().model({backdrop:'static'|booean,show:boolean,keyboard:'',remote:''});$('#myModal').modal('toggle|show|hide')<br>
+                        js 事件 show.bs.modal shown.bs.modal hide.bs.modal hidden.bs.modal loaded.bs.modal   $("#model").on('show.bs.modal',function()...<br>
+                    </p>
+                   <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-backdrop="static" href="www.baidu.com" data-target=".small-modal">Small modal</button>-->
+                  <!--  <a  class="btn btn-primary btnlarge" data-toggle="modal"  data-target=".small-modal" href="index.html">Small modal</a>-->
+
+                    <div id="model" class="modal fade small-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+                               报告内容
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>drop-down</h3>
+                    <p>
+                        向父元素添加 open class  父元素使用 dropdown class  菜单使用 dropdown-menu class<br>
+                    </p>
+
+                    <ul class="nav nav-pills" role="tablist">
+                        <li role="presentation" class="active"><a href="#">Regular link</a></li>
+                        <li role="presentation" class="dropdown">
+                            <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Dropdown
+                                <span class="caret"></span>
+                            </a>
+                            <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Action</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Another action</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Something else here</a></li>
+                                <li role="presentation" class="divider"></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Separated link</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h3>滚动插件</h3>
+
+                    <h3>tabs</h3>
+                    <p>
+                        tabpanel 需要放在 tab-content中，id 对应连接中的href 或者data-toggle<br>
+                        .tab-content .tabpanel {display:none; } .tab-content .active {display:block;} <br>
+                    </p>
+
+                    <ul class="nav nav-tabs nav-justified">
+                        <li class="active" ><a id="home-tab"  href="#home" data-toggle="tab">主页</a></li>
+                        <li><a id="profile-tab"  href="#profile" data-toggle="tab">profile</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a tabindex="-1" href="#">二级菜单1</a></li>
+                                <li><a tabindex="-1" href="#">二级菜单2</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div id="myTabContent" class="tab-content">
+                        <div role="tabpanel" class="tab-pane  active " id="home" aria-labelledby="home-tab">
+                            <p>Raw denim you probably haven't heard of them jean shorts Austin. </p>
+                        </div>
+                        <div role="tabpanel" class="tab-pane " id="profile" aria-labelledby="profile-tab">
+                            <p> Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR.   </p>
+                        </div>
+                    </div>
+
+                    <h3>提示框</h3>
+                    <p>
+                        提示框不会自动初始化，需要手动$('[data-toggle=tooltip]').tooltip();<br>
+                        data-toggle="tooltip" data-placement="right"  data-tigger manual定义提示框的方向<br>
+                        使用绝对布局 当前元素的后面添加或者删除该元素,mouseenter,mouseleave 事件<br>
+                        popover 与 tooltip 类似
+                    </p>
+                    <button type="button" class="btn btn-default" data-tigger="manual" data-toggle="tooltip" data-placement="right" title="" data-original-title="Tooltip on left">Tooltip on left</button>
+
+                    <button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+
+
+                    <h3>按钮</h3>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary"><input type="checkbox">选项1</label>
+                        <label class="btn btn-primary"><input type="checkbox">选项2</label>
+                        <label class="btn btn-primary"><input type="checkbox">选项3</label>
+                    </div>
+
+                    <button type="button" id="myButton" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off">
+                        Loading state
+                    </button>
+
+                    <h3>折叠</h3>
+                    <p class="bs-callout bs-callout-danger">
+                        data-toggle="collapse"  datatarget= data-parent 父元素<br>
+                        .collapse {display:none } .collapse in{display:block}
+                        panel-group  panel 通过隐藏
+                    </p>
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Collapsible Group Item #1
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                <div class="panel-body">
+                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingTwo">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        Collapsible Group Item #2
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                <div class="panel-body">
+                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingThree">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        Collapsible Group Item #3
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                <div class="panel-body">
+                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <h3>轮播</h3>
+                    <p class="bs-callout bs-callout-danger">
+                        底部的圆点使用绝对布局 设置 bottom，text-align:center,li 设置边框，圆角 ，active 的添加背景颜色白色<br>
+                        左右按钮容器 绝对布局 top 0 bottom 0 left 0； width: 15%; text align center ； 按钮 top 50% z-index;<br>
+                        中间的图片 display:none
+                    </p>
+                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carousel-example-generic" data-slide-to="0" class=""></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="2" class="active"></li>
+                        </ol>
+                        <div class="carousel-inner" role="listbox">
+                            <div class="item">
+                                <img data-src="holder.js/900x500/auto/#777:#555/text:First slide" alt="First slide [900x500]" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDkwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iIzc3NyIvPjxnPjx0ZXh0IHg9IjMxNy43NDIxODc1IiB5PSIyNTAiIHN0eWxlPSJmaWxsOiM1NTU7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6NDJwdDtkb21pbmFudC1iYXNlbGluZTpjZW50cmFsIj5GaXJzdCBzbGlkZTwvdGV4dD48L2c+PC9zdmc+" data-holder-rendered="true">
+                            </div>
+                            <div class="item">
+                                <img data-src="holder.js/900x500/auto/#666:#444/text:Second slide" alt="Second slide [900x500]" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDkwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iIzY2NiIvPjxnPjx0ZXh0IHg9IjI3Ny4yODkwNjI1IiB5PSIyNTAiIHN0eWxlPSJmaWxsOiM0NDQ7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6NDJwdDtkb21pbmFudC1iYXNlbGluZTpjZW50cmFsIj5TZWNvbmQgc2xpZGU8L3RleHQ+PC9nPjwvc3ZnPg==" data-holder-rendered="true">
+                            </div>
+                            <div class="item active">
+                                <img data-src="holder.js/900x500/auto/#555:#333/text:Third slide" alt="Third slide [900x500]" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDkwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iIzU1NSIvPjxnPjx0ZXh0IHg9IjMwOC40Mjk2ODc1IiB5PSIyNTAiIHN0eWxlPSJmaWxsOiMzMzM7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6NDJwdDtkb21pbmFudC1iYXNlbGluZTpjZW50cmFsIj5UaGlyZCBzbGlkZTwvdGV4dD48L2c+PC9zdmc+" data-holder-rendered="true">
+                            </div>
+                        </div>
+                      <!--  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                            <span class="sr-only">Next</span>
+                        </a>-->
+                    </div>
+
+
+                    <h3>affix</h3>
+                    <p class="bs-callout bs-callout-danger"></p>
+
+
+                </div>
+            </div>
+        </div> <!-- end row -->
+    </div> <!-- end container -->
+  <script type="text/javascript">
+      $(function(){
+
+          $("#model").on('show.bs.modal',function(){
+                console.info('show.bs.modal');
+          });
+          $("#model").on('shown.bs.modal',function(){
+              console.info('shown.bs.modal');
+          });
+          $("#model").on('hide.bs.modal',function(){
+              console.info('hide.bs.modal');
+          });
+          $("#model").on('hidden.bs.modal',function(){
+              console.info('hidden.bs.modal');
+          });
+          $("#model").on('loaded.bs.modal',function(){
+              console.info('loaded.bs.modal');
+          });
+
+            $("#model").modal('show');
+
+          $('[data-toggle=tooltip]').tooltip();
+
+          $('[data-toggle=popover]').popover();
+
+          $("#myButton").click(function(){
+
+              $(this).button('loading');
+              setTimeout(function(){
+                  $('#myButton').button('reset');//加载完成
+              },2000)
+          });
+      })
+
+  </script>
+</body>
+</html>

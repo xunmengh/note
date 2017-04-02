@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xm.user.dao.BlogCatalogDao" >
+    <!-- 用户管理-->
+
+   <!-- private  int  id;
+    private  String name;
+    private int count;
+    private int index;
+    private User user;-->
+
+  <!--  <selectKey keyProperty="id" resultType="long">
+        select LAST_INSERT_ID()
+    </selectKey>-->
+
+    <insert id="addBlogCatalog" parameterType="blogCatalog"  useGeneratedKeys="true" keyProperty="id">
+        insert into blogcatalog ( name, uid) values (#{name}, #{user.username})
+    </insert>
+
+<!--    <select id="queryBcTotal">
+        select count(1) from blogcatalog where id=    /*  limit #{pgoffset} , #{pgsize}*/
+    </select>-->
+    <select id="countBlogCatalog" parameterType="string" resultType="java.lang.Integer">
+        select count(1)   from blogcatalog  where  uid=#{uid}
+    </select>
+
+    <select id="queryBlogCatalog"  resultType="blogCatalog">
+        select id , name , count ,score from blogcatalog  where  uid=#{uid}
+        <if test="limit!=0">
+                limit #{offset} ,#{limit}
+        </if>
+    </select>
+
+    <update id="updateBlogCatalog">
+        update blogcatalog set name=#{name} where id=#{id}  and uid=#{uid}
+    </update>
+
+    <delete id="deleteBlogCatalog"  >
+        delete from blogcatalog  where   uid=#{uid} and id in
+        <foreach collection="idList"   index="index" item="item" open="(" separator="," close=")"  >
+            #{item}
+        </foreach>
+    </delete>
+<!--
+    <select id="getUserByName" parameterType="string" resultType="user">
+        select username,password,email  from users where username=#{username}
+    </select>
+
+
+    <select id="checkUserExist" parameterType="string" resultType="java.lang.Integer">
+        select count(1) from  users where username=#{username}
+    </select>
+
+    <delete id="delUserByName"  parameterType="string">
+        delete from users where username=#{username}
+    </delete>-->
+
+</mapper>

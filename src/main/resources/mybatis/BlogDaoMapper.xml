@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xm.user.dao.BlogDao" >
+    <!-- 用户管理-->
+
+
+    <insert id="addBlog" parameterType="blog"  useGeneratedKeys="true" keyProperty="id">
+        insert into blog( title, content,updateTime,author,bCatalog)
+           values (#{title}, #{content},#{updateTime},#{author},#{blogCatalog});
+    </insert>
+
+
+
+</mapper>

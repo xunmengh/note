@@ -1,0 +1,1 @@
+var report={"pageIndex":1,"pages":[{"pageId":"pg-0","elementIndex":1,"title":null,"elements":[{"id":"pg-0-1","style":"position: absolute;","type":"echar","loadUrl":"/bss/reportForms/form/page/renderChart.sdo?userId=0&faId=23&rq=&width=400&height=300"}]}]}

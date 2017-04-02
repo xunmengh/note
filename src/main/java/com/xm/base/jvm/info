@@ -1,0 +1,40 @@
+jclasslib
+虚拟机内存分配
+    程序计数器 ，记录程序执行指令的位置，不同线程都有。
+     本地方法栈
+    栈 ： 线程私有的，保存方法的局部变量，部分返回结果 -Xss 设置大小。
+    java 堆 ：对象分配空间 。新生代，老年代。 -Xmx1G  -Xms 最小堆内存，
+    方法区 ：保存类消息和方法消息， -XX:MaxPermSize 持久化，
+
+垃圾回收
+    引用计数法：引用数为0清除，不能解决循环引用的问题
+    标记-清除：通过根节点，标记可达的对象。内存碎片
+    复制算法：将内存分为两块，复制一块中的数据到另一块中。内存对折，垃圾比较多的。
+    标记-压缩算法：将数据移动到一端。
+    增量算法：每次只回收一小部分的内存。能够使系统稳定的执行，增加上下文的切换。
+
+串行收集器：单线程回收，独占式(应用程序暂停)
+并行收集器：多线程回收，独占式(应用程序暂停)
+
+-XX:UseSerialGC: 都使用串行回收器
+-XX:UseParNewGC:新生代 并行
+-XX:ParallelGCThreads 并行回收的线程数
+-XX:UseParallelGC:
+
+GMC
+
+CMS
+
+JIT :将字节码翻译成本地码，
+-XX:CompileThreshold
+
+-XX:+PrintGCDetails
+
+-Xloggc:C:\gc.log 回收垃圾消息。
+
+性能监控器
+Visual VM  在jdk bin 目录下 OQL
+
+日志
+-XX:+PrintGC
+-XX:+PrintGCDetails

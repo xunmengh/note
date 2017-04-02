@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xm.user.dao.BlogCatalogDao" >
+    <!-- 用户管理-->
+
+   <!-- private  int  id;
+    private  String name;
+    private int count;
+    private int index;
+    private User user;-->
+    <insert id="addBlogCatalog" parameterType="blogCatalog"  useGeneratedKeys="true" keyProperty="id">
+        insert into blogcatalog ( name, uid) values (#{name}, #{user.username})
+    </insert>
+
+    <select id="queryBlogCatalog" parameterType="string" resultType="blogCatalog">
+        select id , name , count ,score from blogcatalog  where  uid=#{user.username}
+    </select>
+<!--
+    <select id="getUserByName" parameterType="string" resultType="user">
+        select username,password,email  from users where username=#{username}
+    </select>
+
+
+    <select id="checkUserExist" parameterType="string" resultType="java.lang.Integer">
+        select count(1) from  users where username=#{username}
+    </select>
+
+    <delete id="delUserByName"  parameterType="string">
+        delete from users where username=#{username}
+    </delete>-->
+
+</mapper>

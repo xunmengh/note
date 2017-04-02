@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xm.user.dao.UserDao" >
+    <!-- 用户管理-->
+
+
+    <insert id="addUser" parameterType="user">
+        insert into users (username, password, email) values (
+        #{username}, #{password}, #{email}
+        )
+    </insert>
+
+    <select id="getUserByName" parameterType="string" resultType="user">
+        select username,password,email  from users where username=#{username}
+    </select>
+
+
+    <select id="checkUserExist" parameterType="string" resultType="java.lang.Integer">
+        select count(1) from  users where username=#{username}
+    </select>
+
+    <delete id="delUserByName"  parameterType="string">
+        delete from users where username=#{username}
+    </delete>
+
+</mapper>

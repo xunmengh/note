@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>bootstrap 笔记</title>
+    <link type="text/css" rel="stylesheet" href="../syntaxhighlighter/styles/shCoreDefault.css"/>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css" />
+    <script type="text/javascript" src="../bootstrap/jquery/jquery-2.1.4.min.js"> </script>
+    <script type="text/javascript" src="../bootstrap/js/bootstrap.js"> </script>
+    <script type="text/javascript" src="../syntaxhighlighter/scripts/shCore.js"></script>
+    <script type="text/javascript" src="../syntaxhighlighter/scripts/shBrushJScript.js"></script>
+    <script type="text/javascript" src="../syntaxhighlighter/scripts/shBrushXml.js"></script>
+    <script type="text/javascript">SyntaxHighlighter.all();</script>
+    <link  type="text/css" rel="stylesheet" href="docs.min.css" />
+    <link  type="text/css" rel="stylesheet" href="patch.css" />
+    <style type="text/css">
+        body{ padding-bottom: 70px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <ul class="nav navbar-nav">
+            <li><a href="index.html">css</a></li>
+            <li><a href="index.html">常用的css样式应用</a></li>
+            <li><a href="bootstrap.html">bootstrap</a></li>
+            <li><a href="bootstrap-js.html">bootstrap-js</a></li>
+        </ul>
+    </div>
+    <div class="bs-docs-header">
+        <div class="container">
+            <h1 >基本</h1>
+            <p >介绍bootstrap的js组件</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="bs-docs-section">
+                    <h3>栅格布局</h3>
+                    <p>
+                    <ul>
+                        <li>支持响应式布局 container padding-left|right 15px; row margin-left|right -15px;抵消  [  768px 992px 1200px]</li>
+                        <li>将容器分成12等分 每列左右内边距为15px,宽度使用百分比，以及浮动实现的。</li>
+                        <li>定义 col-[xs|sm|md|lg]-[1~12],col-md-offset-*,col-md-pull-*  col-md-push-*。<b>样式向大兼容：如定义了 col-md-6 而屏幕宽度属于lg，则样式同样作用域他的上面 </b></li>
+                        <li>offset 使用 margin-left实现偏移  ，col-md-pull(right), col-md-push(left)</li>
+                        <li>clearfix [(float会引起高度塌陷问题。触发条件：子元素全是float元素且父元素没有设置高度)]<br>
+                                <pre class="brush:html; toolbar: false;">
+                                    .clearfix:before,.clearfix:after{display:table,content:""}
+                                    .clearfix:after{clear:both}
+                                </pre>
+                            visible-xs</li>
+                    </ul>
+                    </p>
+                      <pre class="brush:html; toolbar: false;">
+                             <div class="container">
+                                 <div class="row">
+                                     <div class="col-md-4">col-md-4</div>
+                                     <div class="col-md-4 col-md-offset-4" >col-md-4 col-md-offset-4</div>
+                                 </div>
+                                 <div class="row">
+                                     <div class="col-md-8 col-md-offset-2">
+                                         <div class="row">
+                                             <div class="col-md-6">col-md-4   嵌套页面</div> <div class="col-md-6">col-md-4</div>
+                                         </div>
+                                     </div>
+                                 </div>
+                                 <div class="row">
+                                     <div class="col-md-4">col-md-4 clearfix visible-xs  row等待的的的试试试试谁水顶顶顶顶顶顶顶顶顶顶大大大大大大顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶水水水谁谁谁水水水水水水水水</div>
+                                     <div class="col-md-4">col-md-4</div>
+                                     <div class="col-md-4">col-md-4</div>
+                                     <div class="clearfix visible-lg"></div>
+                                     <div class="col-md-4">col-md-4</div>
+                                     <div class="col-md-4">col-md-4</div>
+                                 </div>
+                             </div>
+                      </pre>
+                    </div>
+
+                    <div class="bs-example">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-4">col-md-4</div>
+                                <div class="col-md-4 col-md-offset-4" >col-md-4 col-md-offset-4</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-2">
+                                    <div class="row">
+                                        <div class="col-md-6">col-md-4   嵌套页面</div> <div class="col-md-6">col-md-4</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">col-md-4 clearfix visible-xs  row等待的的的试试试试谁水顶顶顶顶顶顶顶顶顶顶大大大大大大顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶水水水谁谁谁水水水水水水水水</div>
+                                <div class="col-md-4">col-md-4</div>
+                                <div class="col-md-4">col-md-4</div>
+                                <div class="clearfix visible-lg"></div>
+                                <div class="col-md-4">col-md-4</div>
+                                <div class="col-md-4">col-md-4</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <h3 id="overview-cascade">默认基本样式</h3>
+                    <p>
+                        <ul>
+                            <li>font-family: sans-serif; font-size 14px  line-height: 1.42857143(20px)</li>
+                            <li>颜色 btn text bg:背景颜色 primary(#337ab7) default(#fff) info(#5bc0de) danger(#d9534f) warning(#f0ad4e)</li>
+                            <li>尺寸 lg sm xs改变内边距 font-size line-height border-radius</li>
+                            <li>状态 active 设置阴影box-show </li>
+                            <li>嵌套元素的样式alert p ，nav 下面的li </li>
+                            <li>并列样式之间的边距 </li>
+                            <li>动态progress 宽度和背景颜色合并成的</li>
+                            <li>js插件的方法</li>
+                            <li>btn inline-box text-align vertical-align font-size line-height边框圆角<br>
+                                btn-block block width 100% 边距设置为0 宽度占满容器。<br>
+                                hover active focus disabled 按钮的状态<br>
+                                btn-group 非首尾的btn取消圆角 .btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+                                 border-radius: 0;
+                                }<br>
+                                .btn-group .btn + .btn,  margin-left: -1px; 1边框的宽度,只使用一个边框<br>
+                                 btn-toolbar 包含多个按钮组 btn-group<br>
+                                .btn-group-vertical 按钮的垂直排列<br>
+                                 btn-group-justified 使用table 布局 包含的元素 使用table-cell 布局。<br>
+                                 向上按钮 .dropup
+                            </li>
+                            <li>
+                                文本输入框 input-group display: table;
+                                input-group-addon 布局table-cell ； vertical-align ：middle;
+                            </li>
+                            <li>
+                                img-circle border-radius: 50%;img-rounded: 6px; img-thumbnail 内边距 背景颜色<br>
+                            </li>
+                            <li>
+                                caret 使用边框实现图标 center-block 居中对齐
+                            </li>
+                            <li>
+                                badge inline-box, vertical-align : baseline 背景颜色 圆角<br>
+                                .badge:empty {display:none}
+                            </li>
+
+                        </ul>
+                    </p>
+                    <div class="bs-example">
+                        <button class="btn btn-primary btn-lg">btn-primary</button>
+                        <button class="btn btn-default">btn-default</button>
+                        <button class="btn btn-info">btn-info</button>
+                        <button class="btn btn-danger">btn-danger</button>
+                        <button class="btn btn-warning">btn-warning</button>
+                        <button class="btn btn-block">btn-block</button>
+
+                        <div class="btn-toolbar">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default">Left</button>
+                                <button type="button" class="btn btn-default">Middle</button>
+                                <button type="button" class="btn btn-default">Right</button>
+                            </div>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default">1</button>
+                                <button type="button" class="btn btn-default">2</button>
+                                <button type="button" class="btn btn-default">3</button>
+                            </div>
+                        </div>
+
+                        <div class="btn-group btn-group-justified ">
+                            <a href="#" class="btn btn-default" role="button">right</a>
+                            <a href="#" class="btn btn-default" role="button">Middle</a>
+                            <a href="#" class="btn btn-default" role="button">left</a>
+                        </div>
+
+                        <div class="btn-group dropup">
+                            <button type="button" class="btn btn-success dropdown-toggle" data-toggle=
+                                    "dropdown">
+                                Success <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="input-group">
+                            <span class="input-group-addon">$</span>
+                            <input type="text" class="form-control"><!-- 这里的input，必须使用formcontrol样式才行 -->
+                            <span class="input-group-addon">.00</span>
+                        </div>
+
+
+
+                        <img data-src="holder.js/140x140" class="img-rounded" alt="140x140" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgdmlld0JveD0iMCAwIDE0MCAxNDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjQ1LjUiIHk9IjcwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTQweDE0MDwvdGV4dD48L2c+PC9zdmc+" data-holder-rendered="true" style="width: 140px; height: 140px;">
+                        <img data-src="holder.js/140x140" class="img-circle" alt="140x140" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgdmlld0JveD0iMCAwIDE0MCAxNDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjQ1LjUiIHk9IjcwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTQweDE0MDwvdGV4dD48L2c+PC9zdmc+" data-holder-rendered="true" style="width: 140px; height: 140px;">
+                        <img data-src="holder.js/140x140" class="img-thumbnail" alt="140x140" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgdmlld0JveD0iMCAwIDE0MCAxNDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjQ1LjUiIHk9IjcwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTQweDE0MDwvdGV4dD48L2c+PC9zdmc+" data-holder-rendered="true" style="width: 140px; height: 140px;">
+
+                        <span class="caret"></span>
+                        <span class="badge">20</span>
+                        <span class="badge"></span>
+
+                        <div class="center-block text-center">
+                             居中对齐219
+                        </div>
+                        <div class="alert alert-success">
+                            <p>sd</p>
+                        </div>
+                        <ul class="nav nav-pills">
+                            <li>f1</li>
+                            <li>f2</li>
+                            <li>f3</li>
+                        </ul>
+                        <div class="progress progress-striped active">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                                60%
+                            </div>
+                        </div>
+
+                        <div class="alert">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>警告!</strong> 你输入的项目不合法！
+                        </div>
+                    </div>
+
+
+                    <h3  id="overview-font">基础排版</h3>
+                    <p>
+                        <ul>
+                            <li>h1 .h1(无外边距) small</li>
+                            <li>文本对齐 text-justify</li>
+                            <li>缩,引用</li>
+                            <li>列表 横向list-inline (li使用inline-block布局 调整边距)</li>
+                            <li>列表 dl-horizontal (dt 浮动 指定宽度160 文字右对齐 dd 指定外边距)</li>
+                            <li>.table padding border-top; .table-striped tr:nth-of-type(odd) 奇数行设置背景颜色<br>
+                                .table-bordered tr:hover 时设置边框的背景颜色<br>
+                                .table-condensed 将内边距设置为5<br>
+                                 tr.active|success|info|warning|danger 设置行的背景颜色<br>
+                                 将table 放在 table-responsive 中构成响应式表格式
+                            </li>
+                        </ul>
+                    </p>
+                    <div class="bs-example">
+                        <h1>he<small>small</small></h1>
+                        <span class="h1">he<small>small</small></span>
+                        <p class="text-center">text-center</p>
+                        <p class="text-justify">text-justify</p>
+                        <p class="text-left">text-left</p>
+                        <abbr title="JavaScript设计模式是一本专门讲解设计模式的专业书籍">JavaScript设计模
+                            式</abbr>
+
+                        <blockquote>
+                            <p>引用</p>
+                        </blockquote>
+
+                       <!-- <blockquote class="pull-right" style="position:relative;">
+                            <p>不愤不启,不悱不发。举一隅,不以三隅反,则吾不复也。</p>
+                            <small>出自 <cite title="论语•述而">论语</cite></small>
+                        </blockquote>-->
+
+                        <ul class="list-inline">
+                            <li>菜单1</li>
+                            <li>菜单2</li>
+                            <li>菜单3</li>
+                        </ul>
+
+                        <dl class="dl-horizontal">
+                            <dt>dt</dt>
+                            <dd>dd</dd>
+                        </dl>
+
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover">
+                                <tr>
+                                    <th>名称</th><th>名称2</th>
+                                </tr>
+                                <tr class="active">
+                                    <td>123</td>
+                                    <td>456</td>
+                                </tr>
+                                <tr class="success">
+                                    <td>123</td>
+                                    <td>456</td>
+                                </tr>
+                                <tr class="info">
+                                    <td>123</td>
+                                    <td>456</td>
+                                </tr>
+                                <tr class="warning">
+                                    <td>123</td>
+                                    <td>456</td>
+                                </tr>
+                                <tr class="danger">
+                                    <td>123</td>
+                                    <td>456</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                    </div><!-- end bs-example -->
+
+
+                    <h3 id="overview-form">表单</h3>
+                    <div>
+                         label 字体加粗 底外边距 <br>
+                        .form-group  margin-bottom: 15px; <br>
+                        .form-control block布局 width 100% 设置高度 box-shadow <br>
+                        .form-control:focus 设置边框颜色以及 box-shadow <br>
+
+                        form-inline form-group 改变 from-control的布局为 inline-block， vertical-align：middle  width：auto<br>
+                        .form-horizontal .form-group 相当于row  ; .form-horizontal .control-label 文字右对齐 取消底外边距<br>
+
+                        has-warning、.has-error、.has-success 修改control-label color,form-control背景颜色,<br>
+                        has-feedback position: relative; form-control-feedback 使用绝对定位 向上偏移label的高度和底部的偏移量25, 图标的高度34和form-control的高度一致
+                        has-warning 和 has-feedback 决定字体颜色
+
+                    </div>
+                    <div class="bs-example">
+                        <form>
+                            <div class="form-group has-error">
+                                <label class="control-label">登录账户</label>
+                                <input type="email" class="form-control" placeholder="请输入你的用户名或Email">
+                            </div>
+                            <div class="form-group has-success">
+                                <label>密码</label>
+                                <input type="text" class="form-control" placeholder="请输入你的密码">
+                            </div>
+                            <div class="checkbox">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" value="体育" id="inlineCheckbox1">体育
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" value="音乐" id="inlineCheckbox2">音乐
+                                </label>
+                            </div>
+                            <div class="form-group has-success has-feedback">
+                                <label class="control-label" for="inputSuccess2">Input with
+                                    success</label>
+                                <input type="text" class="form-control" id="inputSuccess2" />
+                                <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+                            </div>
+                            <button type="submit" class="btn btn-default">登录</button>
+                        </form>
+
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <label>登录账户</label>
+                                <input type="email" class="form-control" placeholder="请输入你的用户名或Email">
+                            </div>
+                            <div class="form-group">
+                                <label>密码</label>
+                                <input type="text" class="form-control" placeholder="请输入你的密码">
+                            </div>
+                            <div class="checkbox">
+                                <label><input type="checkbox" disabled>记住密码</label>
+
+                            </div>
+                        </form>
+
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-md-2 control-label" >登录账户</label>
+                                <div class="col-md-8">
+                                    <input type="email" class="form-control" placeholder="请输入你的用户名或Email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">密码</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" placeholder="请输入你的密码">
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <h3 class="overview-icon">图标设计</h3>
+                    <div>
+                        @font-face{
+                            font-family: 'Glyphicons Halflings';/* 定义字体名称*/
+                            src：url 字体路径 format 自定义字体的格式
+                        }
+                        glyphicon-search：before{content：'';} 使用在span或者i元素上
+                    </div>
+                    <div class="bs-example">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </div>
+
+                    <h3 class="overview-dropmenu">下拉</h3>
+                    <div>
+                        .dropdown 使用相对布局<br>
+                        .dropdown-menu 使用绝对布局 top:100%,left:0 display:none margin-top:2px  list-style:none<br>
+                        .open > .dropdown-menu {display: block;}<br>
+                        .dropdown-menu .divide 设置上下边距，高度，背景颜色<br>
+                         多级菜单
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown">
+                            Dropdown
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+                            <li role="presentation" ><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+                            <li role="presentation" class="divider"></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+
+
+                    <h3 id="overview-nav">导航栏</h3>
+                    <div>
+                        nav list-style: none; nav li { display：block}<br>
+                        nav-tabs 设置 border-bottom； nav-tabs li{float} ；nav-tabs li  a{设置内边距}<br>
+                        nav-tabs li.active{margin-bottom: -1px(使得li的边框和ul的边框重叠); 设置背景颜色和border ， border-bottom-color: transparent}<br>
+                         胶囊布局<br>
+                        nav-justified 宽度自动平分 display： table{width：100%} <br>
+                        navbar 设置边框 圆角 相对布局 最小高度  navbar-default|.navbar-inverse 设置颜色和背景颜色<br>
+                        navbar-header 向左浮动  .navbar-brand 设置高度，字体大小，行高，边距的设置
+                        navbar-nav li 设置左浮动，<br>
+                        navbar-fixed-top |navbar-fixed-bottom相对于浏览器布局  position: fixed;响应式布局 跳过<br>
+                        Breadcrumb 面包屑  .breadcrumb li {display:inline-box}   li + li:before{content ：'/\00a0' }<br>
+                        pagination 实现分页的插件<br>
+
+                        pager  {text-align:center }li中的文字居中<br>
+
+                        list-group  list-group-item block 设置边框 margin-bottom -1 抵消边框<br>
+
+                    </div>
+                    <div class="bs-example">
+                        <ul class="nav nav-tabs nav-justified">
+                            <li class="active"><a>主页</a></li>
+                            <li><a>b</a></li>
+                            <li class="disabled"><a>c</a></li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown
+                                <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a tabindex="-1" href="#">二级菜单1</a></li>
+                                    <li><a tabindex="-1" href="#">二级菜单2</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-pills nav-stacked">
+                            <li class="active"><a>主页</a></li>
+                            <li><a>b</a></li>
+                            <li class="disabled"><a>c</a></li>
+                        </ul>
+
+
+                        <div class="navbar navbar-default" role="navigation">
+                            <div class="navbar-header">
+                                <a class="navbar-brand" href="#">Brand</a>
+                            </div>
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="#">active</a></li>
+                                <li><a href="#">Link</a></li>
+                                <li class="disabled"><a href="#">disabled</a></li>
+                                <li><a href="#">Link</a></li>
+                            </ul>
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="navbar navbar-default " role="navigation">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="#">Brand</a>
+                        </div>
+                        <p class="navbar-text navbar-left">左浮动</p>
+                        <p class="navbar-text navbar-right">右浮动</p>
+                    </div>
+
+                    <ul class="breadcrumb">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Library</a></li>
+                        <li class="active">Data</li>
+                    </ul>
+
+                    <ul class="pagination">
+                        <li><a href="#">«</a></li> <!-- 上一页 -->
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">»</a></li> <!-- 下一页 -->
+                    </ul>
+
+                    <ul class="pager">
+                        <li class="prev"><a href="#">上一页</a></li>
+                        <li  class="next"><a href="#">下一页</a></li>
+                    </ul>
+
+                    <ul class="list-group">
+                        <li class="list-group-item">JavaScript编程精解</li>
+                        <li class="list-group-item">JavaScript设计模式</li>
+                        <li class="list-group-item">JavaScript启示录</li>
+                        <li class="list-group-item">当前你正在读的书</li>
+                        <li class="list-group-item">正在构想的书</li>
+                    </ul>
+
+
+                    <h3 id="overview-jumbotron">jumbotron</h3>
+                    <p>扩大了边距</p>
+                    <div class="jumbotron">
+                        <h1>Hello, world!</h1>
+                        <p>...</p>
+                        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+                    </div>
+
+                    <h3 id="overview-thumbnail">缩约图</h3>
+                    <p>栅栏布局分割 白色背景 内边距 边框 img 居中对齐</p>
+                    <div class="row">
+                        <div class="col-xs-6 col-md-3">
+                            <a href="#" class="thumbnail">
+                                <img data-src="holder.js/100%x180" alt="...">
+                            </a>
+                        </div>
+                    </div>
+
+                    <h3 id="overview-media">media对象</h3>
+                    <p> media定义了上外边距，第一个节点没有上边距<br>
+                        media-left table-cell 右边距
+                        media-body table-cell
+                    </p>
+
+
+                    <h3 id="overview-panel">面板</h3>
+                    <p> </p>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">面板header</div>
+                        <div class="panel-body">
+                            这里是面板内容
+                        </div>
+                        <div class="panel-footer">面板footer</div>
+                    </div>
+
+
+
+
+                    <div class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+                        <ul class="nav navbar-nav">
+                            <li><a>1</a></li>
+                            <li><a>2</a></li>
+                            <li><a>3</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div> <!-- end row -->
+    </div> <!-- end container -->
+</body>
+</html>

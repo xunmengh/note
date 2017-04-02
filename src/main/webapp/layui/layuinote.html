@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>layui  Node</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>开始使用Layui</title>
+    <link rel="stylesheet" href="css/layui.css">
+</head>
+<body>
+
+
+
+<!-- 你的HTML代码 -->
+
+<script src="layui.js"></script>
+<script>
+
+    layui.config({
+//        dir: '/res/layui/' //layui.js 所在路径（注意，如果是script单独引入layui.js，无需设定该参数。），一般情况下可以无视
+        version: true //一般用于更新组件缓存，默认不开启。设为true即让浏览器不缓存。也可以设为一个固定的值，如：201610
+        ,debug: true //用于开启调试模式，默认false，如果设为true，则JS模块的节点会保留在页面
+        ,base: '' //设定扩展的Layui组件的所在目录，一般用于外部组件扩展
+    });
+
+    //一般直接写在一个js文件中
+    layui.use(['layer', 'form'], function(){
+        var layer = layui.layer
+                ,form = layui.form();
+
+     /* layer.open({
+            title: '在线调试'
+            ,content: '可以填写任意的layer代码'
+        });*/
+
+        layer.open({
+            type: 2,
+            content: 'https://baidu.com' //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+        });
+
+//        layer.msg('Hello World');
+    });
+
+    layui.link('a.css'); // 加载外部css文件
+
+    // 本地存储  localStorage
+ /*   layui.data('test', {
+        key: 'nickname'
+        ,value: '贤心'
+    });*/
+
+    //【查】：向test表读取全部的数据
+    var localTest = layui.data('test');
+    console.log(localTest.nickname); //获得“贤心”
+
+    //【删】：删除test表的nickname字段
+   /* layui.data('test', {
+        key: 'nickname'
+        ,remove: true
+    });*/
+
+   layui.data('test', null); //删除test表
+
+    var device = layui.device();
+    console.info(device);
+
+
+
+
+</script>
+
+
+<div class="layui-tab">
+    <ul class="layui-tab-title">
+        <li class="layui-this">标题一</li>
+        <li>标题二</li>
+        <li>标题三</li>
+    </ul>
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">内容1</div>
+        <div class="layui-tab-item">内容2</div>
+        <div class="layui-tab-item">内容3</div>
+    </div>
+</div>
+
+<div class="layui-form">
+    <div class="layui-inline"></div>
+    <select name="quiz">
+        <optgroup label="城市记忆">
+            <option value="你工作的第一个城市">你工作的第一个城市？</option>
+        </optgroup>
+        <optgroup label="学生时代">
+            <option value="你的工号">你的工号？</option>
+            <option value="你最喜欢的老师">你最喜欢的老师？</option>
+        </optgroup>
+    </select>
+</div>
+
+<div class="layui-form">
+    <input type="checkbox" name="write" title="写作" checked=""><div class="layui-unselect layui-form-checkbox layui-form-checked"><span>写作</span><i class="layui-icon"></i></div>
+    <input type="checkbox" name="dai" title="发呆"><div class="layui-unselect layui-form-checkbox"><span>发呆</span><i class="layui-icon"></i></div>
+    <input type="checkbox" name="jin" title="禁用" disabled=""><div class="layui-unselect layui-form-checkbox layui-checkbox-disbaled layui-disabled"><span>禁用</span><i class="layui-icon"></i></div>
+</div>
+
+<div class="layui-form">
+    <input type="checkbox" name="" lay-skin="switch" checked=""><div class="layui-unselect layui-form-switch layui-form-onswitch"><i></i></div>
+    <input type="checkbox" name="" lay-skin="switch"><div class="layui-unselect layui-form-switch"><i></i></div>
+    <input type="checkbox" name="" lay-skin="switch" disabled=""><div class="layui-unselect layui-form-switch layui-checkbox-disbaled layui-disabled"><i></i></div>
+</div>
+
+
+<i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe60c;</i>
+
+</body>
+</html>

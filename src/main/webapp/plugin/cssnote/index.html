@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>css笔记</title>
+    <link type="text/css" rel="stylesheet" href="../syntaxhighlighter/styles/shCoreDefault.css"/>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css" />
+    <script type="text/javascript" src="../jquery/jquery.min.js"> </script>
+    <script type="text/javascript" src="../bootstrap/js/bootstrap.js"> </script>
+    <script type="text/javascript" src="../syntaxhighlighter/scripts/shCore.js"></script>
+    <script type="text/javascript" src="../syntaxhighlighter/scripts/shBrushJScript.js"></script>
+    <script type="text/javascript" src="../syntaxhighlighter/scripts/shBrushXml.js"></script>
+    <script type="text/javascript">SyntaxHighlighter.all();</script>
+    <link  type="text/css" rel="stylesheet" href="../css/docs.min.css" />
+    <link  type="text/css" rel="stylesheet" href="../patch.css" />
+</head>
+<body>
+    <div class="container">
+        <ul class="nav navbar-nav">
+            <li><a href="index.html">css</a></li>
+            <li><a href="index.html">常用的css样式应用</a></li>
+            <li><a href="bootstrap.html">bootstrap</a></li>
+        </ul>
+    </div>
+    <div class="bs-docs-header">
+        <div class="container">
+            <h1 style="">基本</h1>
+            <p style="">介绍css的引入，选择器，单位，字体，box布局</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="bs-docs-section">
+                    <h1 id="overview" class="page-header">引入css</h1>
+                    <p>引入外部文件 media all|print|screen  alternate 备选样式属性，style 标签 ，在元素中使用style</p>
+                    <div >
+                        <pre class="brush:html; toolbar: false;">
+                             <link  type="text/css" rel="alternate stylesheet" href="docs.min.css" media="all" />
+
+                            <style type="text/css">
+                                 p{background-color: blue;}
+                             </style>
+
+                             <p style="background-color: blue"></p>
+                        </pre>
+                    </div>
+
+                    <h3 id="overview-doctype">选择器</h3>
+                    <p>
+                        <ul>
+                            <li>根据标签名如div，class(同时包含多个类选择器 .red.yellow) ，id(#id)</li>
+                            <li>属性包含某个属性如：[href] 属性值等于[title='title'] 用空格分割的词中有red：[class~=red] 以bg开头：[class^=bg] 以bg结尾：[class$=bg] 包含：[class*=bg] </li>
+                            <li>关系选择器 后代 div p  直接子元素 div > p  div身后相连的p兄弟节点 div + p</li>
+                            <li>伪类和伪元素选择器 a:link a:visited :focus :hover :active <br>
+                                :first-letter :first-line  :before{content:'before'} :after </li>
+
+                        </ul>
+                    <div >
+                        <pre class="brush:html; toolbar: false;">
+                             <style type="text/css">
+                                 h2{color:red;}
+                                 #bg{background-color: #0000cc;height: 30px;}
+                                 .red{color:red;}
+                                 .yellow{color:yellow;}
+                                 .yellow.red{color:#ff7700;}
+                                 div.relation + p {background-color: #ab10d9;}
+                                 div.weilei:before{content:'伪类选择'}
+                             </style>
+                            <h2> 字体颜色</h2>
+                            <div id="bg"></div>
+                            <div class="yellow">yellow</div>
+                            <div class="yellow red">yellow</div>
+                            <a age="10">a</a>
+                            <p>p1</p>
+                            <div class="relation"></div>
+                            <p>p2</p>
+                            <p>p3</p>
+                            <div class="weilei"></div>
+                        </pre>
+                    </div>
+                    <div class="bs-example">
+                        <style type="text/css">
+                            h2{color:red;}
+                            #bg{background-color: #0000cc;height: 30px;}
+                            .red{color:red;}
+                            .yellow{color:yellow;}
+                            .yellow.red{color:#ff7700;}
+                            div.relation + p {background-color: #ab10d9;}
+                            div.weilei:before{content:'before选择'}
+                        </style>
+                        <h2> 字体颜色</h2>
+                        <div id="bg"></div>
+                        <div class="yellow">yellow</div>
+                        <div class="yellow red">yellow</div>
+                        <a age="10">a</a>
+                        <p>p1</p>
+                        <div class="relation"></div>
+                        <p>p2</p>
+                        <p>p3</p>
+                        <div class="weilei"></div>
+                    </div>
+
+                    <h3 id="overview-cascade">层叠样式</h3>
+                    <p>1.样式选择的权重
+                        <ul>
+                            <li>id #id (0 1 0 0)</li>
+                            <li>.class 属性选择 伪类 (0 0 1 0)</li>
+                            <li>div 元素(0 0 0 1)</li>
+                            <li> style 定义的内联样式(1 0 0 0)</li>
+                            <li>  back:{ color:red !important;} 优先级最高</li>
+                        </ul>
+                     2.样式的继承性,border 背景颜色 内外边距<br>
+                     3.如果权重相同，后面定义的样式的覆盖前面定义的样式，如果权重不相同，权重大的样式起作用。
+                    </p>
+                    <div class="bs-example">
+                    </div>
+
+
+                    <h3  id="overview-font">字体</h3>
+                    <p>
+                        <ul>
+                            <li>字体：font-family 如果字体名中包含空格需要用引号包含，</li>
+                            <li>字体加粗：font-weight（100，200，900） normal bold bolder lighter</li>
+                            <li>字体大小：font-size ; 1em font-size的大小</li>
+                        </ul>
+                    </p>
+
+                    <h3  id="overview-text">文字</h3>
+                    <div class="bs-callout bs-callout-danger">
+                        <p>
+                            文本缩进或者突出 text-indent  使用在块集元素上<br>
+                            文本水平对齐方式 text-align left center right justify<br>
+                            line-height 属性是指文本行基线之间的距离：控制行间距。(line-height - font-size)/2 行间距，<br>
+                            line-height的百分数相对于font-size 计算的, line-height:1 继承缩放比例<br>
+                            text-align:作用在块级元素上<br>
+                            line-height 等于元素高度height
+                            vertical-align 行内元素 文本垂直对齐和替换元素 sup sub top middle bottom 数值：相对于基线上升或者下降<br>
+                            文字间距word-spacing letter-spacing<br>
+                            文字转换 text-transform uppercase| lowercase capitalize<br>
+                            文字装饰text-decoration  text-shadow  direction  文字方向 <br>
+                            文本空格white-space <br>
+                            <img src="white-space.jpg">
+                        </p>
+                    </div>
+                    <div >
+                        <pre class="brush:html; toolbar: false;">
+                             <style type="text/css">
+                                 p.indent{
+                                     text-indent: 3em;
+                                     width: 200px;
+                                     boder: 3px;
+                                     font-size: 15px;
+                                     line-height: 120%;
+                                     /* line-height: 1.2 */
+
+                                 }
+                                 p.indent .lower{
+                                     vertical-align: super;
+                                 }
+                                 p.indent .big-spacing{
+                                     word-spacing: 1.5em;
+                                 }
+                                 p.indent .upper{
+                                     text-transform: uppercase;
+                                 }
+                                 p.indent2{
+                                     text-indent: -3em;
+                                     padding-left: 3em;
+                                     width: 200px;
+                                     boder: 3px;
+                                     font-size: 20px;
+                                     line-height: 28px;
+                                 }
+                             </style>
+                        <p class="indent">发送到导师开发<span class="lower">就鲁</span>大师佛<span class="big-spacing">agc def</span>树老都市客积<span class="upper">ssdb</span>分都是水电费</p>
+                        <p class="indent2">发送到导师开发就鲁大师佛挡杀佛独树老都市客积分都是水电费</p>
+                        </pre>
+                    </div>
+                    <div class="bs-example">
+                        <style type="text/css">
+                            p.indent{
+                                text-indent: 3em;
+                                width: 200px;
+                                boder: 3px;
+                                font-size: 15px;
+                                line-height: 120%;
+                                /* line-height: 1.2 */
+
+                            }
+                            p.indent .lower{
+                                vertical-align: super;
+                            }
+                            p.indent .big-spacing{
+                                word-spacing: 1.5em;
+                            }
+                            p.indent .upper{
+                                text-transform: uppercase;
+                            }
+                            p.indent2{
+                                text-indent: -3em;
+                                padding-left: 3em;
+                                width: 200px;
+                                boder: 3px;
+                                font-size: 20px;
+                                line-height: 28px;
+                            }
+                        </style>
+                        <p class="indent">发送到导师开发<span class="lower">就鲁</span>大师佛<span class="big-spacing">agc def</span>树老都市客积<span class="upper">ssdb</span>分都是水电费</p>
+                        <p class="indent2">发送到导师开发就鲁大师佛挡杀佛独树老都市客积分都是水电费</p>
+                    </div>
+
+                    <h3 id="overview-div">块状元素的盒子布局</h3>
+                    <p>外边距+边框+内边距+内容宽度+内边距+边框+外边距   宽度=左边框+左内边距+内容宽度+右内边距+右边框<br>
+                        <img src="box.jpg" />
+                        指定margin-left width margin-right 其中的两个值,另外的一个使用auto 会使他的和等于父元素的宽度；<br>
+                        元素居中对齐:指定宽度<br>
+                        外边距会发生重叠作用，width 和height 作用于 块级元素和行内替换元素<br>
+                        <b>外边距可以用到行内元素上</b>
+
+                    </p>
+                    <div>
+                         <pre class="brush:html; toolbar: false;">
+                            <style type="text/css">
+                                div.box{ width:80%;height:100px;  border:3px solid  red;}
+                                div.box p{  margin-left: auto; margin-right: auto;
+                                    width:60%;text-align: center ;
+                                    height:80%; margin-top:10px;  margin-bottom: 10px;
+                                    border:1px solid  blue;}
+                                div.box p .middle{
+                                    line-height: 80px;
+                                    vertical-align: middle;
+                                }
+                            </style>
+                        <div class="box">
+                            <p><span class="middle">居中对齐</span>中文字符<span style="margin-left: 10px;margin-left: 10px;">外边距</span>中文字符</p>
+                        </div>
+                        </pre>
+                    </div>
+                    <div class="bs-example">
+                        <style type="text/css">
+                            div.box{ width:80%;height:100px;  border:3px solid  red;}
+                            div.box p{  margin-left: auto; margin-right: auto;
+                                width:60%;text-align: center ;
+                                height:80%; margin-top:10px;  margin-bottom: 10px;
+                                border:1px solid  blue;}
+                            div.box p .middle{
+                                line-height: 80px;
+                                vertical-align: middle;
+                            }
+                        </style>
+                        <div class="box">
+                            <p><span class="middle">居中对齐</span>中文字符<span style="margin-left: 10px;margin-right: 10px;">外边距</span>中文字符</p>
+                        </div>
+                    </div>
+
+                    <h3 id="overview-background">背景</h3>
+                    <div class="bs-callout bs-callout-info">
+                        <p>背景颜色的设置background-color  background-image background-repeat
+                            background-position  background-attachment(scroll|fix)
+                        </p>
+                    </div>
+                    <div class="bs-example">
+                            <div style="width:100px;height: 100px;border:1px solid #ccc;background-color: #ccc;">d1</div>
+                            <div style="margin:20px 20px;width:100px;height: 100px;border:1px solid #ccc;padding: 20px 20px;background-color: #ccc;">d1</div>
+                    </div>
+
+                    <h3 id="overview-float">浮动和定位</h3>
+                    <div class="bs-callout bs-callout-info">
+                        float[right|left|none] 适用于所有的元素,float 相对于最近的块级祖先元素；<b>相邻浮动元素的外边距不会合并</b> <br>
+                        clear: 清除浮动 <br>
+                        position：[static|relative|absolute|fixed]默认为static <br>
+                        使用absolute 定位的元素其包含块是，非使用static布局的祖先元素 <br>
+                        left right top bottom 相对于包含块的偏移位置 <br>
+                        overflow ：块级元素 <br>
+                        clip:rect  裁剪图像 <b>应用于绝对定位的元素或者是图像</b><br>
+                        visibility 是否可见
+                        z-index
+
+                    </div>
+
+                    <div class="bs-example">
+                        <style>
+                            div.float-container{
+                                border: 3px solid mediumblue;
+                                width: 50%;
+                                height: 200px;
+                                position: relative;
+                            }
+                            p.fl{float:left; margin: 20px 0px;width:70%;}
+                        </style>
+                        <div class="float-container">
+                            <p class="fl" >123</p>
+                            <p class="fl" >外边距没有合并456</p>
+                            <p style="margin: 20px 0;clear: both;">123</p>
+                            <p style="margin: 20px 0;clear: both;">外边距没有合并456</p>
+                            <p style="position: absolute;right:10px;top:0px; clip:rect(0px 50em 3em 0px);">
+                                对绝对定位的元素的布局大小可以改变的好了多少多岁的空数据莱德斯基斐林试剂六点十分离开健身房索拉卡多岁的看见都说了姜思达蓝色的两手空空鸡斗始开笼就流口水解放路看电视剧第三空间了圣诞节塑料袋口家里的事
+                                姜思达蓝色的两手空空鸡斗始开笼就流口水解放路看电视剧第三空间了圣诞节塑料袋口家里的事
+                                姜思达蓝色的两手空空鸡斗始开笼就流口水解放路看电视剧第三空间了圣诞节塑料袋口家里的事
+                                姜思达蓝色的两手空空鸡斗始开笼就流口水解放路看电视剧第三空间了圣诞节塑料袋口家里的事
+                                姜思达蓝色的两手空空鸡斗始开笼就流口水解放路看电视剧第三空间了圣诞节塑料袋口家里的事
+                            </p>
+                        </div>
+                    </div>
+
+                    384  table自动插入元素
+
+
+                    <h3 class="overview-list">列表布局</h3>
+                    <p>
+                        list-style-type none
+                        list-style-position inside outside
+                        list-style-image <br>
+                        :before {content :''} 插入文本内容  attr 插入属性值<br>
+                        计数器
+                        counter-reset：标识符 默认值
+                        counter-increment:标识符 number 步长<br>
+                        光标:  cursor<br>
+                        打印分页样式 page
+
+
+                    </p>
+
+                    <div class="bs-example">
+                        <style type="text/css">
+                            #a-after:after{content:"(" attr(herf) ")";}
+
+                            ol{counter-reset:ordered;list-style-type :none;}
+                            ol li:before{counter-increment: ordered;content: counters(ordered,".") " - ";}
+
+                        </style>
+                        <ul style="list-style-type: none">
+                            <li>标签1</li>
+                            <li>标签2</li>
+                            <li>标签3</li>
+                        </ul>
+                         <a herf="www.xm.tj" id="a-after">外部链接</a>
+                        <h5 id=""></h5>
+
+                        <ol id="menu">
+                            <li>第一章
+                                <ol>
+                                    <li>第一节
+                                        <ol>
+                                            <li>第一小部分</li>
+                                            <li>第二小部分</li>
+                                        </ol>
+                                    </li>
+                                    <li>第二节</li>
+                                </ol>
+                            </li>
+                            <li>第二章
+                                <ol>
+                                    <li>第一节</li>
+                                    <li>第二节</li>
+                                </ol>
+                            </li>
+                            <li>第三章</li>
+                        </ol>
+                    </div>
+
+
+                    <h3 id="overview-media">标题</h3>
+                    <p>
+                        @media
+                    </p>
+
+                    <h3 id="overview-css3">css3新特性</h3>
+                    <p>
+                        box-shadow: h-shadow v-shadow [blur]模糊 [spread]宽度 color [inset];
+                        -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+                        box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);<br>
+                        abc
+                    </p>
+                    <div class="bs-example">
+                         <style type="text/css">
+                             div.box-shadow{
+                                 width:300px;height:100px;
+                                 box-shadow: 10px 10px 0px 1px yellow;
+                             }
+                         </style>
+                         <div class="box-shadow"></div>
+                    </div>
+                </div>
+            </div><!-- end col-md-3 -->
+           <!-- <div class="col-md-3">
+                <div class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" role="complementary">
+                    <ul class="nav bs-docs-sidenav">
+
+                        <li class="">
+                            <a href="#overview">概览</a>
+                            <ul class="nav">
+                                <li class=""><a href="#overview-doctype">HTML5 文档类型</a></li>
+                                <li class=""><a href="#overview-titile">文本样式</a></li>
+
+                            </ul>
+                        </li>
+
+                    </ul>
+                    <a class="back-to-top" href="#top">
+                        返回顶部
+                    </a>
+
+                    <a href="#" class="bs-docs-theme-toggle" role="button">
+                        主题预览
+                    </a>
+
+                </div>
+            </div>-->
+        </div> <!-- end row -->
+    </div> <!-- end continer -->
+</body>
+</html>
